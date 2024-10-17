@@ -18,6 +18,10 @@ mongoose.connect(
   "mongodb+srv://rohitkotian07:2703Rk0509@jarvisusers.w5pi4.mongodb.net/jarvisUsers"
 );
 
+app.get("/hello", (req, res) => {
+  res.send("Hello There!!!");
+});
+
 app.post("/register", (req, res) => {
   const { email } = req.body;
   UserModel.findOne({ email: email }).then((user) => {
