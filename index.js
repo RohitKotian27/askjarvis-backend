@@ -8,7 +8,9 @@ const port = process.env.PORT || 3001;
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb://127.0.0.1:27017/jarvisUsers");
+mongoose.connect(
+  "mongodb+srv://rohitkotian07:2703Rk0509@jarvisusers.w5pi4.mongodb.net/jarvisUsers"
+);
 
 app.post("/register", (req, res) => {
   const { email } = req.body;
