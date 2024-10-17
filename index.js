@@ -8,7 +8,7 @@ const port = process.env.PORT || 3001;
 app.use(express.json());
 app.use(
   cors({
-    origin: "",
+    origin: "https://askjarvis-backend.vercel.app",
     methods: ["POST", "GET"],
     credentials: true,
   })
