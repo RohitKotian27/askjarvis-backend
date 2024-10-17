@@ -18,7 +18,7 @@ mongoose.connect(
   "mongodb+srv://rohitkotian07:2703Rk0509@jarvisusers.w5pi4.mongodb.net/jarvisUsers"
 );
 
-app.get("/hello", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello There!!!");
 });
 
