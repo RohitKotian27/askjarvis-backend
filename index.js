@@ -6,7 +6,13 @@ const UserModel = require("./models/Users");
 const app = express();
 const port = process.env.PORT || 3001;
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "",
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
 mongoose.connect(
   "mongodb+srv://rohitkotian07:2703Rk0509@jarvisusers.w5pi4.mongodb.net/jarvisUsers"
