@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -15,7 +16,7 @@ app.use(
 );
 
 mongoose.connect(
-  "mongodb+srv://rohitkotian07:2703Rk0509@jarvisusers.w5pi4.mongodb.net/jarvisUsers"
+  `mongodb+srv://${process.env.USER_ID}:${process.env.USER_PASSWORD}@jarvisusers.w5pi4.mongodb.net/jarvisUsers`
 );
 
 app.get("/", (req, res) => {
