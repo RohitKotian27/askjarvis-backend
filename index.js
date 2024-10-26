@@ -23,6 +23,32 @@ app.get("/", (req, res) => {
   res.send("Hello There!!!");
 });
 
+app.post("/getchats", (req, res) => {
+  const { email } = req.body;
+  UserModel.findOne({ email: email }).then((user) => {
+    if (user) {
+      res.json(user);
+    }
+  });
+});
+
+app.post("/savechats", (req, res) => {
+  const { email, chats } = req.body;
+  UserModel.findOneAndUpdate(
+    { email: email },
+    { userChats: chats },
+    {
+      new: true,
+    }
+  )
+    .then(() => {
+      res.json("User Chats have been saved successfully");
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 app.post("/register", (req, res) => {
   const { email } = req.body;
   UserModel.findOne({ email: email }).then((user) => {
@@ -45,6 +71,7 @@ app.post("/login", (req, res) => {
           message: "Success",
           userId: user.id,
           userName: user.name,
+          email: user.email,
         };
         res.json(loginResponse);
       } else {
